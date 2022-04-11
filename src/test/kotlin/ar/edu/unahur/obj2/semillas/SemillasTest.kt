@@ -19,7 +19,6 @@ class SemillasTest : DescribeSpec ({
             menta.altura.shouldBe(1.0)
             menta.anioObtencion.shouldBe(2021)
         }
-
         it("verificar si da semillas") {
             menta.daSemillas().shouldBeTrue()
             mentita.daSemillas().shouldBeFalse()
@@ -28,23 +27,19 @@ class SemillasTest : DescribeSpec ({
             quinoa2.daSemillas().shouldBeTrue()
             sojaTransgenica.daSemillas().shouldBeFalse()
         }
-
         it("tolerancia al sol"){
             soja.toleranciaAlSol().shouldBe(8)
         }
-
         it("es fuerte") {
             menta.esFuerte().shouldBeFalse()
             soja.esFuerte().shouldBeFalse()
         }
-
         it("espacio") {
             menta.espacioOcupado().shouldBe(2.0)
             mentita.espacioOcupado().shouldBe(1.3)
             peperina.espacioOcupado().shouldBe(2.6)
             soja.espacioOcupado().shouldBe(0.3)
         }
-
         it("verifico la suma de varias") {
             val superficie = mutableListOf(
                 soja.espacioOcupado(),

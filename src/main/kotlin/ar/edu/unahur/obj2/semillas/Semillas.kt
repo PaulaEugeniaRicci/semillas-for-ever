@@ -11,7 +11,6 @@ abstract class Planta(var altura: Double, val anioObtencion: Int) {
 }
 
 open class Menta(altura: Double, anioObtencion: Int) : Planta(altura, anioObtencion) {
-
     override fun daSemillas(): Boolean {
         return super.daSemillas() || this.altura > 0.4
     }
