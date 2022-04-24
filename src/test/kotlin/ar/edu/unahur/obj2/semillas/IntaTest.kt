@@ -23,6 +23,9 @@ class IntaTest : DescribeSpec ({
             Inta.coleccionParcelas.shouldContainExactly(parcela, parcela)
         }
         it ("Promedio de 8 plantas en 2 parcelas"){
+            Inta.coleccionParcelas.clear()
+            Inta.agregarParcela(parcela)
+            Inta.agregarParcela(parcela)
             Inta.calcularPromedio().shouldBe( 4)
         }
         it ("Promedio de 0 plantas en una parcela"){
@@ -64,6 +67,7 @@ class IntaTest : DescribeSpec ({
             Inta.parcelaMasAutosustentable().shouldBe(parcela)
         }
         it ("Porcentaje de plantas bien asociadas de parcela mas autosustentable"){
+            Inta.coleccionParcelas.clear()
             Inta.coleccionParcelas.add(parcelaPequena)
             Inta.coleccionParcelas.add(parcela2)
             Inta.coleccionParcelas.add(parcela3)
