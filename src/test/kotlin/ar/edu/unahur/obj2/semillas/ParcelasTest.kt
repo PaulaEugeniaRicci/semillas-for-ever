@@ -12,14 +12,14 @@ class ParcelasTest : DescribeSpec ({
         val soja = Soja(1.5, 2021)
         val parcela = ParcelaEcologica(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja))
 
-        it("prueba de superficie y cantidad maxima") {
+        it("Superficie y cantidad maxima") {
             parcela.superficie().shouldBe(20)
             parcela.cantidadMaxima().shouldBe(4)
         }
-        it ("prueba de complicaciones"){
+        it ("Tiene o no complicaciones"){
             parcela.tieneComplicaciones().shouldBeFalse()
         }
-        it ("prueba de plantas agregadas"){
+        it ("Plantas agregadas"){
             shouldThrowAny {
                 parcela.plantar(soja)
             }
@@ -32,7 +32,7 @@ class ParcelasTest : DescribeSpec ({
         val parcelaEcologica = ParcelaEcologica(20.0, 1.0, 5, mutableListOf(menta))
         val parcelaIndustrial = ParcelaIndustrial(20.0, 1.0, 5, mutableListOf(menta, soja))
 
-        it("prueba de asociaciones"){
+        it("Verificar asociaciones"){
             parcelaEcologica.seAsociaBien(menta).shouldBeTrue()
             parcelaIndustrial.seAsociaBien(soja).shouldBeTrue()
         }

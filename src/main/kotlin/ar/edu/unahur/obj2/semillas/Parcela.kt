@@ -18,7 +18,7 @@ abstract class Parcela (var ancho: Double, var largo: Double, var horasSol: Int,
     abstract fun seAsociaBien(planta: Planta) : Boolean
 
     fun porcentajeAsociadas() : Double {
-        return ((this.listaPlantas.count{ p -> this.seAsociaBien(p)} * 100) / this.listaPlantas.size).toDouble()
+        return ((listaPlantas.count{ p -> this.seAsociaBien(p)} * 100) / this.listaPlantas.size).toDouble()
     }
 }
 
