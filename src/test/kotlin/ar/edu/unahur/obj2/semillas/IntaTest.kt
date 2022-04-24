@@ -8,7 +8,7 @@ import io.kotest.matchers.doubles.shouldBeBetween
 import io.kotest.matchers.shouldBe
 
 class IntaTest : DescribeSpec ({
-    describe("Prueba de estadisticas INTA ") {
+    describe("Prueba de estadisticas INTA") {
         val soja = Soja(1.5, 2021)
         val menta = Menta(1.5, 2021)
         val parcela = ParcelaEcologica(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja))
@@ -55,7 +55,7 @@ class IntaTest : DescribeSpec ({
             Inta.coleccionParcelas.add(parcela)
             Inta.parcelaMasAutosustentable().shouldBe(parcela)
         }
-        it ("La parcela mas autosustentable de varias autosustentables"){
+        it ("La parcela mas autosustentable entre varias parcelas"){
             Inta.coleccionParcelas.clear()
             Inta.coleccionParcelas.add(parcelaPequena)
             Inta.coleccionParcelas.add(parcela)
@@ -63,7 +63,7 @@ class IntaTest : DescribeSpec ({
             Inta.coleccionParcelas.add(parcela3)
             Inta.parcelaMasAutosustentable().shouldBe(parcela)
         }
-        it ("Porcentaje de parcela mas autosustentable"){
+        it ("Porcentaje de plantas bien asociadas de parcela mas autosustentable"){
             Inta.coleccionParcelas.add(parcelaPequena)
             Inta.coleccionParcelas.add(parcela2)
             Inta.coleccionParcelas.add(parcela3)
