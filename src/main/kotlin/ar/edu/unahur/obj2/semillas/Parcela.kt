@@ -1,6 +1,6 @@
 package ar.edu.unahur.obj2.semillas
 
-class Parcela (var ancho: Double, var largo: Double, var horasSol: Int, var listaPlantas: MutableList<Planta>, private val strategy: Strategy){
+abstract class Parcela (var ancho: Double, var largo: Double, var horasSol: Int, var listaPlantas: MutableList<Planta> ){
     fun superficie() : Double = ancho * largo
     fun cantidadMaxima() : Int {
         if (ancho > largo) { return ( this.superficie() /5 ).toInt() }
@@ -15,6 +15,26 @@ class Parcela (var ancho: Double, var largo: Double, var horasSol: Int, var list
         }
         else { listaPlantas.add(planta) }
     }
+    abstract fun seAsociaBien(planta: Planta) : Boolean
 
-    fun ejecutarStrategy(planta: Planta) = strategy.seAsociaBien(this, planta)
+    fun porcentajeAsociadas() : Double {
+        return ((this.listaPlantas.count{ p -> this.seAsociaBien(p)} * 100) / this.listaPlantas.size).toDouble()
+    }
 }
+
+class ParcelaEcologica (ancho: Double, largo: Double, horasSol: Int, listaPlantas: MutableList<Planta>
+    ): Parcela (ancho, largo, horasSol, listaPlantas){
+
+     override fun seAsociaBien (planta: Planta) : Boolean {
+        return (!this.tieneComplicaciones() && planta.esParcelaIdeal(this))
+    }
+}
+
+class ParcelaIndustrial (ancho: Double, largo: Double, horasSol: Int, listaPlantas: MutableList<Planta>
+    ): Parcela (ancho, largo, horasSol, listaPlantas) {
+
+    override fun seAsociaBien (planta: Planta) : Boolean {
+        return (planta.esFuerte() && this.listaPlantas.size == 2 )
+    }
+}
+

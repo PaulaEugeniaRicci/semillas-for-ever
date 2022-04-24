@@ -5,7 +5,7 @@ import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
 
-class SemillasTest : DescribeSpec ({
+class PlantasTest : DescribeSpec ({
     describe("Creación de las plantas") {
         val menta = Menta(1.0, 2021)
         val mentita = Menta(0.3, 2021)
@@ -47,21 +47,6 @@ class SemillasTest : DescribeSpec ({
                 mentita.espacioOcupado()
             ).sum()
             Math.ceil(superficie).shouldBe(4)
-        }
-    }
-    describe("Prueba de parcelas ideales") {
-        val menta = Menta(1.0, 2021)
-        val soja = Soja(0.6, 2009)
-        val quinoa = Quinoa (5.0,2010, 0.2)
-        val sojaTransgenica = SojaTransgenica (0.8, 2008)
-        val parcela = Parcela(2.0, 4.0, 8, mutableListOf(soja), ParcelaIndustrial())
-        val parcelaPequena = Parcela(2.5, 2.0, 8, mutableListOf(soja), ParcelaIndustrial())
-
-        it("probamos cada variedad") {
-            menta.esParcelaIdeal(parcela).shouldBeTrue()
-            quinoa.esParcelaIdeal(parcela).shouldBeTrue()
-            soja.esParcelaIdeal(parcela).shouldBeTrue()
-            sojaTransgenica.esParcelaIdeal(parcelaPequena).shouldBeTrue()
         }
     }
 })

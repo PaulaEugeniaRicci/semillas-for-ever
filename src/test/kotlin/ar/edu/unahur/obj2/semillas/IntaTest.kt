@@ -12,8 +12,8 @@ class IntaTest : DescribeSpec ({
         val inta = Inta
         val soja = Soja(1.5, 2021)
         val menta = Menta(1.5, 2021)
-        val parcela = Parcela(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja), ParcelaEcologica())
-        val parcelaPequena = Parcela(2.0, 1.0, 5, mutableListOf(menta, soja), ParcelaIndustrial())
+        val parcela = ParcelaEcologica(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja))
+        val parcelaPequena = ParcelaIndustrial(2.0, 1.0, 5, mutableListOf(menta, soja))
 
         inta.agregarParcela(parcela)
         inta.agregarParcela(parcela)
@@ -27,6 +27,9 @@ class IntaTest : DescribeSpec ({
         it ("Prueba de promedio con resultados truncados"){
             inta.agregarParcela(parcelaPequena)
             inta.calcularPromedio().shouldBe(3)
+        }
+        it ("Prueba de parcela mas autosustentable"){
+            inta.parcelaMasAutosustentable().shouldBe(null)
         }
     }
 })

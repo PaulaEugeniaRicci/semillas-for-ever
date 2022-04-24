@@ -10,7 +10,7 @@ import io.kotest.matchers.shouldBe
 class ParcelasTest : DescribeSpec ({
     describe("Creacion de parcela") {
         val soja = Soja(1.5, 2021)
-        val parcela = Parcela(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja), ParcelaEcologica())
+        val parcela = ParcelaEcologica(20.0, 1.0, 10, mutableListOf(soja, soja, soja, soja))
 
         it("prueba de superficie y cantidad maxima") {
             parcela.superficie().shouldBe(20)
@@ -29,12 +29,12 @@ class ParcelasTest : DescribeSpec ({
     describe("Asociacion de plantas") {
         val menta = Menta(1.5, 2021)
         val soja = Soja(2.0, 2021)
-        val parcelaEcologica = Parcela(20.0, 1.0, 5, mutableListOf(menta), ParcelaEcologica())
-        val parcelaIndustrial = Parcela(20.0, 1.0, 5, mutableListOf(menta, soja), ParcelaIndustrial())
+        val parcelaEcologica = ParcelaEcologica(20.0, 1.0, 5, mutableListOf(menta))
+        val parcelaIndustrial = ParcelaIndustrial(20.0, 1.0, 5, mutableListOf(menta, soja))
 
         it("prueba de asociaciones"){
-            parcelaEcologica.ejecutarStrategy(menta).shouldBeTrue()
-            parcelaIndustrial.ejecutarStrategy(soja).shouldBeTrue()
+            parcelaEcologica.seAsociaBien(menta).shouldBeTrue()
+            parcelaIndustrial.seAsociaBien(soja).shouldBeTrue()
         }
     }
 })
